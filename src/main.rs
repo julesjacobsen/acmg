@@ -48,7 +48,7 @@ fn run_info_command(acmg_evidence: &str) {
     for evidence in set {
         let evidence_code = evidence.evidence_code;
         let points = evidence.points();
-        println!("{:4}: {:2} ({})", evidence, points, evidence_code.description);
+        println!("{:4}:{:2} '{}'", evidence, points, evidence_code.description);
         score += points;
     }
     println!("--------");
@@ -206,7 +206,7 @@ lazy_static! {
     static ref ODDS_PATH_SUPPORTING: f64 = ODDS_PATH_VERY_STRONG.powf(*SUPPORTING_EVIDENCE_EXPONENT); // 2.08
     static ref EVIDENCE_CODES: HashMap<&'static str, EvidenceCode> = HashMap::from([
         // Path VeryStrong
-        ("PVS1", EvidenceCode{category: Pathogenic, strength: VeryStrong, code: 1, description: "null variant (nonsense, frameshift, canonical ±1 or 2 splice sites, initiation codon, single or multiexon deletion) in a gene where LOF is a known mechanism of disease"}),
+        ("PVS1", EvidenceCode{category: Pathogenic, strength: VeryStrong, code: 1, description: "Null variant (nonsense, frameshift, canonical ±1 or 2 splice sites, initiation codon, single or multiexon deletion) in a gene where LOF is a known mechanism of disease"}),
         // Path Strong
         ("PS1", EvidenceCode{category: Pathogenic, strength: Strong, code: 1, description: "Same amino acid change as a previously established pathogenic variant regardless of nucleotide change"}),
         ("PS2", EvidenceCode{category: Pathogenic, strength: Strong, code: 2, description: "De novo (both maternity and paternity confirmed) in a patient with the disease and no family history"}),
@@ -231,7 +231,7 @@ lazy_static! {
         // Benign Strong
         ("BS1", EvidenceCode{category: Benign, strength: Strong, code: 1, description: "Allele frequency is greater than expected for disorder"}),
         ("BS2", EvidenceCode{category: Benign, strength: Strong, code: 2, description: "Observed in a healthy adult individual for a recessive (homozygous), dominant (heterozygous), or X-linked (hemizygous) disorder, with full penetrance expected at an early age"}),
-        ("BS3", EvidenceCode{category: Benign, strength: Strong, code: 3, description:  "Well-established in vitro or in vivo functional studies show no damaging effect on protein function or splicing"}),
+        ("BS3", EvidenceCode{category: Benign, strength: Strong, code: 3, description: "Well-established in vitro or in vivo functional studies show no damaging effect on protein function or splicing"}),
         ("BS4", EvidenceCode{category: Benign, strength: Strong, code: 4, description: "Lack of segregation in affected members of a family"}),
         // Benign Supporting
         ("BP1", EvidenceCode{category: Benign, strength: Supporting, code: 1, description: "Missense variant in a gene for which primarily truncating variants are known to cause disease"}),
